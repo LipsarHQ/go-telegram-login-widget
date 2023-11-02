@@ -7,9 +7,9 @@ Telegram Login Widget library for Go/Golang.
 ## Table of Content
 
 - [Usage/Examples](#usageexamples)
-  - [Unmarshal JSON](#unmarshal-json)
-  - [NewFromQuery](#newfromquery)
-  - [NewFromURI](#newfromuri)
+    - [Unmarshal JSON](#unmarshal-json)
+    - [NewFromQuery](#newfromquery)
+    - [NewFromURI](#newfromuri)
 - [FAQ](#faq)
 - [License](#license)
 - [Links](#links)
@@ -23,8 +23,6 @@ package main
 
 import (
 	"encoding/json"
-	
-	"github.com/LipsarHQ/go-telegram-login-widget"
 )
 
 // Telegram bot token.
@@ -33,9 +31,9 @@ const token = "XXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXX"
 func main() {
 	// 1. Get "AuthorizationData" from JSON.
 	data := []byte(`{"first_name":"Klim","hash":"b7a7fc776729077786e4190aec2c5dcecd2ec66ae0faf1b44316d541b955da95","last_name":"Sidorov","photo_url":"https://t.me/klimsidorov","username":"klimsidorov","auth_date":976255200,"id":1}`)
-	
+
 	var modelAuthorizationData telegramloginwidget.AuthorizationData
-	
+
 	if err := json.Unmarshal(data, &modelAuthorizationData); err != nil {
 		return
 	}
@@ -45,7 +43,7 @@ func main() {
 		// Invalid hash.
 		return
 	}
-	
+
 	// Hash is valid.
 }
 ```
@@ -75,7 +73,7 @@ func main() {
 		"photo_url":  []string{"https://t.me/klimsidorov"},
 		"username":   []string{"klimsidorov"},
 	}
-	
+
 	modelAuthorizationData, err := telegramloginwidget.NewFromQuery(values)
 	if err != nil {
 		return
@@ -106,7 +104,7 @@ const token = "XXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXX"
 func main() {
 	// 1. Get "AuthorizationData" from uri.
 	const uri = "https://example.com/?auth_date=976255200&first_name=Klim&hash=b7a7fc776729077786e4190aec2c5dcecd2ec66ae0faf1b44316d541b955da95&id=1&last_name=Sidorov&photo_url=https%3A%2F%2Ft.me%2Fklimsidorov&username=klimsidorov"
-	
+
 	modelAuthorizationData, err := telegramloginwidget.NewFromURI(uri)
 	if err != nil {
 		return

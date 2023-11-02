@@ -258,8 +258,7 @@ linters-settings:
 
   gomodguard:
     allowed:
-      domains:
-        - github.com
+      domains: [ ]
       modules: [ ]
     blocked:
       local_replace_directives: true

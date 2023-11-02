@@ -11,10 +11,6 @@
 # Allow "Makefile" file.
 !Makefile
 
-# Buf.
-!buf.gen.yaml
-!buf.work.yaml
-
 # Go.
 !.golangci.yml
 !*.go
